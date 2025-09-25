@@ -27,10 +27,9 @@ namespace Module4Challenge
 
             // create random object
             Random rnd = new Random();
-            int month = rnd.Next(1, 13);
-            // Ask loop starts here 
+
             string answer = "yes";
-            while (answer.ToLower() == "yes")
+            while (true)
             {
                 int firstIndex = rnd.Next(dadjokes.Length);
                 int secondIndex;
@@ -46,11 +45,24 @@ namespace Module4Challenge
                 Console.WriteLine("2. " + dadjokes[secondIndex]);
                 //ask user
                 Console.WriteLine("\n Do you want to see more dad jokes? (Yes/No)");
-                answer = Console.ReadLine();
+                answer = Console.ReadLine()?.Trim().ToLower();
 
-            }//End while loop
-            Console.WriteLine("\n Thnaks for laughing! Goodbye!");
+                if (answer == "y" || answer == "yes")
+                {
+                    Console.WriteLine();
+                    continue;
+                }
+                else if (answer == "n" || answer == "no")
+                {
+                    Console.WriteLine("\nThanks for laughing! Goodbye!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter 'y' or 'n'.\n");
+                }
+            }// end while
+        }// end main
+    }//end class
+}// end namespace
 
-       }//End main 
-    }// End class
-}//End namespace
